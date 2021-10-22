@@ -2,21 +2,13 @@
 
 const randomNumbers = [10, 30, 15, 25, 50, 40, 5]
 
-const oddNumbers = randomNumbers.filter(number => {
-  return number % 2 !== 0;
-})
+const oddNumbers = randomNumbers.filter(number => number % 2 !== 0)
 
 // 02 - Exiba no console quantos números abaixo de 501 o array abaixo possui.
 
 const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691]
 
-const iterArray = crazyNumbers.reduce((acc, number) => {
-  if (number < 501) {
-    acc += 1 
-  }
-
-  return acc
-}, 0)
+const iterArray = crazyNumbers.reduce((acc, number) => number < 501 ? ++acc : acc, 0)
 
 // 03 - Gere um novo array com cada um dos números abaixo elevados ao quadrado e exiba o novo array no console.
 
@@ -81,7 +73,5 @@ const cart = [
   { name: 'Death Stranding', price: 149.99 }
 ]
 
-const moviesList = cart.map(({ name }) => name)
-for (movieName of moviesList) {
-  console.log(`- ${movieName}`)
-}
+const moviesList = cart.reduce((acc, { name }) => `${acc}- ${name}\n`, '')
+console.log(moviesList)
